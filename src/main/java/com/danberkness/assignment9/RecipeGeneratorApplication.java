@@ -13,8 +13,7 @@ public class RecipeGeneratorApplication {
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(RecipeGeneratorApplication.class, args);
 		
-		FileService fileService = new FileService();
-		fileService.readFile();
+		
 	}
 
 }
