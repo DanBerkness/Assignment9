@@ -1,5 +1,7 @@
 package com.danberkness.assignment9.domain;
 
+
+
 public class Recipe {
 
 	 private Integer cookingMinutes;

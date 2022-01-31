@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -45,56 +46,39 @@ public class FileService {
 		return allRecipes;
 	}
 	
-	
-	
-	
-	
 	public List<Recipe> getGlutenFreeRecipes(List<Recipe> allRecipes) {
-		List<Recipe> glutenFreeRecipes = new ArrayList<>();
 		
-		for (Recipe recipe : allRecipes) {
-			if (recipe.getGlutenFree().equals(true)) {
-				
-				glutenFreeRecipes.add(recipe);
-			}
-		}
+		List<Recipe> glutenFreeRecipes = allRecipes.stream()
+												   .filter(Recipe::getGlutenFree)
+												   .collect(Collectors.toList());
+		
 		return glutenFreeRecipes;
 	}
 	
 	public List<Recipe> getVeganRecipes(List<Recipe> allRecipes) {
-		List<Recipe> veganRecipes = new ArrayList<>();
 		
-		for (Recipe recipe : allRecipes) {
-			if (recipe.getVegan().equals(true)) {
-				
-				veganRecipes.add(recipe);
-			}
-		}
+		List<Recipe> veganRecipes = allRecipes.stream()
+											  .filter(Recipe::getVegan)
+											  .collect(Collectors.toList());
+	
 		return veganRecipes;
 	}
 	
 	public List<Recipe> getVeganAndGlutenFreeRecipes(List<Recipe> allRecipes) {
-		List<Recipe> veganAndGlutenFreeRecipes = new ArrayList<>();
 		
-		for (Recipe recipe : allRecipes) {
-			if (recipe.getVegan().equals(true) && recipe.getVegan().equals(true)) {
-				
-				veganAndGlutenFreeRecipes.add(recipe);
-			}
-		}
+		List<Recipe> veganAndGlutenFreeRecipes = allRecipes.stream()
+													.filter(Recipe::getVegan)
+													.filter(Recipe::getGlutenFree)
+													.collect(Collectors.toList());
+		
 		return veganAndGlutenFreeRecipes;
 	}
 	
 	public List<Recipe> getVegitarianRecipes(List<Recipe> allRecipes) {
-		List<Recipe> vegitarianRecipes = new ArrayList<>();
 		
-		for (Recipe recipe : allRecipes) {
-			if (recipe.getVegetarian().equals(true)) {
-				
-				vegitarianRecipes.add(recipe);
-			}
-		}
-		return vegitarianRecipes;
+		List<Recipe> vegetarianRecipes = allRecipes.stream().filter(Recipe::getVegetarian).collect(Collectors.toList());
+		
+		return vegetarianRecipes;
 	}
 	
 }

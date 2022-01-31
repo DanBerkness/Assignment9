@@ -18,10 +18,11 @@ public class RecipeController {
 	@Autowired
 	FileService fileService;
 	
-	List<Recipe> allRecipes = new ArrayList<>();
+	
 
 	@GetMapping("/gluten-free")
 	public Collection<Recipe> generateGlutenFreeRecipes () throws IOException {
+		List<Recipe> allRecipes = new ArrayList<>();
 		List<Recipe> readAllRecipes = fileService.readInData(allRecipes);
 		return fileService.getGlutenFreeRecipes(readAllRecipes);
 		
@@ -30,6 +31,7 @@ public class RecipeController {
 
 	@GetMapping("/vegan")
 	public Collection<Recipe> generateVeganRecipes () throws IOException {
+		List<Recipe> allRecipes = new ArrayList<>();
 		List<Recipe> readAllRecipes = fileService.readInData(allRecipes);
 		return fileService.getVeganRecipes(readAllRecipes);
 		
@@ -38,6 +40,7 @@ public class RecipeController {
 
 	@GetMapping("/vegan-and-gluten-free")
 	public Collection<Recipe> generateGlutenFreeAndVeganRecipes () throws IOException {
+		List<Recipe> allRecipes = new ArrayList<>();
 		List<Recipe> readAllRecipes = fileService.readInData(allRecipes);
 		return fileService.getVeganAndGlutenFreeRecipes(readAllRecipes);
 		
@@ -46,6 +49,7 @@ public class RecipeController {
 
 	@GetMapping("/vegetarian")
 	public Collection<Recipe> generateVegitarianRecipes () throws IOException {
+		List<Recipe> allRecipes = new ArrayList<>();
 		List<Recipe> readAllRecipes = fileService.readInData(allRecipes);
 		return fileService.getVegitarianRecipes(readAllRecipes);
 		
@@ -54,6 +58,7 @@ public class RecipeController {
 
 	@GetMapping("/all-recipes")
 	public List<Recipe> generateAllRecipes () throws IOException {
+		List<Recipe> allRecipes = new ArrayList<>();
 		return fileService.readInData(allRecipes);
 	}
 }
